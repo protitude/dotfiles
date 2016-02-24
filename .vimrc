@@ -1,0 +1,130 @@
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'StanAngeloff/php.vim'
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'airblade/vim-gitgutter'
+Plugin 'joonty/vim-phpqa'
+Plugin 'phpcomplete.vim'
+"Plugin 'SuperTab'
+"Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tlib_vim'
+" Drupal Plugins
+Plugin 'http://git.drupal.org/project/vimrc.git', {'name': 'vim-plugin-for-drupal', 'rtp': 'bundle/vim-plugin-for-drupal/'}
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'crooloose/nerdtree'
+Plugin 'msanders/snipmate.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'evidens/vim-twig'
+Plugin 'joonty/vdebug'
+Plugin 'surround.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+" Set the codesniffer args
+let g:phpqa_codesniffer_args = "--standard=Zend"
+let g:phpqa_messdetector_ruleset = "/Users/milesfrance/drush/vendor/phpunit/phpunit/build/phpmd.xml"
+" Syntatic settings
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_enable_balloons = 1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map = { 'mode': 'active',
+            \                   'active_filetypes' : [],
+            \                   'passive_filetypes' : ['php'] }
+" Status Line
+set showmode "show current mode down the bottom
+"set tags=/web/cuboulder/data/releases/oit/master/php.tags
+set cursorline          " highlight the current line
+
+"Setting the status line... {{{
+
+set statusline=%f
+""tail of the filename
+
+"display a warning if the file format isn't Unix
+set statusline+=%#warningmsg#
+set statusline+=%{&ff!='unix'?'['.&ff.']':''}
+set statusline+=%*
+"
+""display a warning if file encoding isn't UTf-8
+set statusline+=%#warningmsg#
+set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}
+set statusline+=%*
+
+set statusline+=%h      "help file flag
+set statusline+=%y      "filetype
+set statusline+=%r      "read only flag
+set statusline+=%m      "modified flag
+"end status line }}}
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" ctr+j will insert break.
+:nnoremap <NL> i<CR><ESC>
+
+set number
+set colorcolumn=80
+" Share with clipboard
+set clipboard=unnamed
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+syntax enable
+colorscheme monokai
+" Highlight search results
+" set hlsearch
+set hls is ic
+" Allow backspace in insert mode
+set backspace=indent,eol,start
+" Indentation https://www.drupal.org/node/29325
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set smarttab            " better backspace and tab functionality
+" bells
+set noerrorbells        " turn off audio bell
+set visualbell          " but leave on a visual bell
+
+" Filetypes
+if has("autocmd")
+  filetype plugin on      " enable filetype-specific plugins
+  " Treat .json files as .js
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  " Treat .md files as Markdown
+  autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+  autocmd BufNewFile,BufRead *.twig   set syntax=html
+endif
