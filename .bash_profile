@@ -16,9 +16,9 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-source /Users/milesfrance/Dropbox/programs/bash/profile_shared
-source /Users/milesfrance/.goto_shortcuts
-export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
+source ~/Dropbox/programs/bash/profile_shared
+source ~/.goto_shortcuts
+#export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
 
 if [ -f "$HOME/.bash_ps1" ]; then
  . "$HOME/.bash_ps1"
