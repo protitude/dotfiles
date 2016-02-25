@@ -16,7 +16,6 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-source ~/Dropbox/programs/bash/profile_shared
 source ~/.goto_shortcuts
 #export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
 

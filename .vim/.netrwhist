@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/Users/milesfrance/Documents/web/cuboulder/data/releases/oit/master/sites/all/modules/custom/cusearch'
 let g:netrw_dirhist_2='/Users/milesfrance/Documents/web/cuboulder/data/releases/oit/master/sites/all/modules/custom'
 let g:netrw_dirhist_3='/Users/milesfrance/Documents/web/cuboulder/data/releases/oit/master/sites/all/modules/custom/servicenow'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/Users/milesfrance/Documents/web/cuboulder/data/releases/
 let g:netrw_dirhist_5='/Users/milesfrance/Documents/web/cuboulder/data/releases/oit/master/sites/all/modules/custom'
 let g:netrw_dirhist_6='/Users/milesfrance/Documents/web/cuboulder/data/releases/oit/master/sites/all/modules/custom/servicenow'
 let g:netrw_dirhist_7='/Users/milesfrance/Documents/web/drupal-vm'
+let g:netrw_dirhist_8='/Users/milesfrance/Documents/web/nglocal/roles/apache/templates'
