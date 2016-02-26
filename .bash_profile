@@ -16,7 +16,6 @@ _complete_ssh_hosts ()
         return 0
 }
 complete -F _complete_ssh_hosts ssh
-source ~/.goto_shortcuts
 #export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
 
 if [ -f "$HOME/.bash_ps1" ]; then
@@ -41,10 +40,10 @@ PS1="$env_icon CM:\$(pwd_two)\$(parse_git_branch):"
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Forcing command to come from latest drush
-alias drush='~/drush/drush'
-alias composer='/usr/local/bin/composer/composer.phar'
+#alias drush='~/drush/drush'
+#alias composer='/usr/local/bin/composer/composer.phar'
 
-export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
+#export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
 
 alias wtf="sudo !!"
@@ -82,12 +81,17 @@ function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
 function did () {
-  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;say 'Import Complete'
+  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
 }
 
+source ~/.goto_shortcuts
 function short () {
   shortcut=$(pwd)
   echo 'alias .'$1'="cd '$shortcut'"' >> ~/.goto_shortcuts
   source ~/.bash_profile
 }
-source ~/Dropbox/programs/bash/profile_sensitive
+if [ -f "~/Dropbox/programs/bash/profile_sensitive" ]
+then
+  source ~/Dropbox/programs/bash/profile_sensitive
+fi
+
