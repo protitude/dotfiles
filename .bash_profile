@@ -94,4 +94,6 @@ if [ -f "~/Dropbox/programs/bash/profile_sensitive" ]
 then
   source ~/Dropbox/programs/bash/profile_sensitive
 fi
-
+if [ -f "$HOME/.bash_ps1" ]; then
+  . "$HOME/.bash_ps1"
+fi
