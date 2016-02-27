@@ -23,7 +23,7 @@ fi
 
 # Prompt variable:
 
-PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}$env_icon$(pwd_two)$(parse_git_branch)'"$command_style "
+PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}$env_icon $(pwd_two)$(parse_git_branch)'"$command_style "
 
 # Reset color for command output
 # (this one is invoked every time before a command is executed):
