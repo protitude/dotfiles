@@ -22,8 +22,12 @@ elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
 fi
 
 # Prompt variable:
-
-PS1="$status_style"'$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}$env_icon $(pwd_two)$(parse_git_branch)'"$command_style "
+#host_char() {
+#  hostname|wc -c
+#}
+host_char=$(hostname|wc -c)
+let host_char=host_char+9
+PS1="$status_style"'$(hostname)$fill \t\n'"$prompt_style"'${debian_chroot:+($debian_chroot)}$env_icon $(pwd_two)$(parse_git_branch)'"$command_style "
 
 # Reset color for command output
 # (this one is invoked every time before a command is executed):
@@ -32,7 +36,7 @@ trap 'echo -ne "\033[00m"' DEBUG
 function prompt_command {
 
 # create a $fill of all screen width minus the time string and a space:
-let fillsize=${COLUMNS}-9
+let fillsize=${COLUMNS}-$(( $host_char ))
 fill=""
 while [ "$fillsize" -gt "0" ]
   do
