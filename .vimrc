@@ -21,7 +21,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'http://git.drupal.org/project/vimrc.git', {'name': 'vim-plugin-for-drupal', 'rtp': 'bundle/vim-plugin-for-drupal/'}
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'crooloose/nerdtree'
 Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
