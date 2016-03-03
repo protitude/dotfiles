@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ ! -d bundle ]
+then
+  mkdir .vim/bundle
+  git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
+fi
+
 if [ ! -L ~/.bash_profile ]
 then
   ln -s $(pwd)"/.bash_profile" ~/.bash_profile
@@ -31,7 +37,7 @@ then
 fi
 if [ ! -L ~/.goto_shortcuts ]
 then
-  touch $(pwd)"/.goto_shortcuts"
+  touch ~/.goto_shortcuts
   echo "Created .goto_shortcuts"
 fi
 if [ ! -L ~/.vim/bundle/vim-multiple-cursors ]
