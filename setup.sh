@@ -29,3 +29,13 @@ then
   ln -s $(pwd)"/.osx" ~/.osx
   echo "linked .osx"
 fi
+if [ ! -L ~/.goto_shortcuts ]
+then
+  touch $(pwd)"/.goto_shortcuts"
+  echo "Created .goto_shortcuts"
+fi
+if [ ! -L ~/.vim/bundle/vim-multiple-cursors ]
+then
+  vim +PluginInstall +qall
+fi
+

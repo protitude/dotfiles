@@ -18,24 +18,24 @@ _complete_ssh_hosts ()
 complete -F _complete_ssh_hosts ssh
 #export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
 
-if [ -f "$HOME/.bash_ps1" ]; then
- . "$HOME/.bash_ps1"
- fi
-
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-pwd_two() {
-  pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
-}
-if [ "$(uname)" == "Darwin" ]; then
-  env_icon=""
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-  env_icon="🐧"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-  env_icon= "¯\_(ツ)_/¯"
-fi
-PS1="$env_icon CM:\$(pwd_two)\$(parse_git_branch):"
+#if [ -f "$HOME/.bash_ps1" ]; then
+# . "$HOME/.bash_ps1"
+# fi
+#
+#parse_git_branch() {
+#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+#}
+#pwd_two() {
+#  pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
+#}
+#if [ "$(uname)" == "Darwin" ]; then
+#  env_icon=""
+#elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+#  env_icon="🐧"
+#elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+#  env_icon= "¯\_(ツ)_/¯"
+#fi
+#PS1="$env_icon CM:\$(pwd_two)\$(parse_git_branch):"
 
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -54,11 +54,12 @@ alias dsstore-remove="find . -name '*.DS_Store' -type f -delete"
 alias subl="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
 alias selenium-server="/usr/local/Cellar/selenium-server-standalone/2.49.0/bin/selenium-server"
 
-alias gst='git status'
+alias gs='git status'
 alias gc='git commit'
 alias gco='git checkout'
 alias gl='git pull --rebase'
 alias gpom="git pull origin master"
+alias gpu="git pull"
 alias gp='git push'
 alias gb='git branch'
 alias gba='git branch -a'
@@ -82,6 +83,10 @@ function dlc () {
 }
 function did () {
   drush sql-drop -y;drush sqlc < $1;drush cc all;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
+}
+
+function title() {
+  export PROMPT_COMMAND='echo -ne "\033]0;"'$1'"\007"'
 }
 
 source ~/.goto_shortcuts
