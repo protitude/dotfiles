@@ -8,7 +8,7 @@ fi
 
 if [ ! -L ~/.bash_profile ]
 then
-  ln -s $(pwd)"/.bash_profile" ~/.bash_profile
+  ln -s $(pwd)"/.bash_profile" "$1.bash_profile"
   echo "linked .bash_profile"
 fi
 
