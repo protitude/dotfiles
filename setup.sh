@@ -14,25 +14,25 @@ fi
 
 if [ ! -L ~/.bash_ps1 ]
 then
-  ln -s $(pwd)"/.bash_ps1" ~/.bash_ps1
+  ln -s $(pwd)"/.bash_ps1" "$1.bash_ps1"
   echo "linked .bash_ps1"
 fi
 
 if [ ! -L ~/.vim ]
 then
-  ln -s $(pwd)"/.vim" ~/.vim
+  ln -s $(pwd)"/.vim" "$1.vim"
   echo "linked .vim"
 fi
 
 if [ ! -L ~/.vimrc ]
 then
-  ln -s $(pwd)"/.vimrc" ~/.vimrc
+  ln -s $(pwd)"/.vimrc" "$1.vimrc"
   echo "linked .vimrc"
 fi
 
 if [ ! -L ~/.osx ]
 then
-  ln -s $(pwd)"/.osx" ~/.osx
+  ln -s $(pwd)"/.osx" "$1.osx"
   echo "linked .osx"
 fi
 if [ ! -L ~/.goto_shortcuts ]
