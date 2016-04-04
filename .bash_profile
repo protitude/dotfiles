@@ -1,19 +1,19 @@
 _complete_ssh_hosts ()
 {
-        COMPREPLY=()
-        cur="${COMP_WORDS[COMP_CWORD]}"
-        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
-                        cut -f 1 -d ' ' | \
-                        sed -e s/,.*//g | \
-                        grep -v ^# | \
-                        uniq | \
-                        grep -v "\[" ;
-                cat ~/.ssh/config | \
-                        grep "^Host " | \
-                        awk '{print $2}'
-                `
-        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
-        return 0
+  COMPREPLY=()
+  cur="${COMP_WORDS[COMP_CWORD]}"
+  comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+    cut -f 1 -d ' ' | \
+    sed -e s/,.*//g | \
+    grep -v ^# | \
+    uniq | \
+    grep -v "\[" ;
+  cat ~/.ssh/config | \
+    grep "^Host " | \
+    awk '{print $2}'
+  `
+  COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+  return 0
 }
 complete -F _complete_ssh_hosts ssh
 #export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
@@ -44,7 +44,6 @@ complete -F _complete_ssh_hosts ssh
 #alias composer='/usr/local/bin/composer/composer.phar'
 
 #export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
-
 
 alias wtf="sudo !!"
 
@@ -77,7 +76,7 @@ alias bccp="bundle exec compass compile -e production --force"
 alias bcw="bundle exec compass watch --poll"
 
 #drush Commands
-alias drush-sd="drush sql-dump > ~/Desktop/$(date +%Y-%m-%d-%H.%M.%S).sql"
+alias drush-sd="drush sql-dump > ~/$(date +%Y-%m-%d-%H.%M.%S).sql"
 function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
@@ -102,3 +101,12 @@ fi
 if [ -f "$HOME/.bash_ps1" ]; then
   . "$HOME/.bash_ps1"
 fi
+# Delete a given line number in the known_hosts file.
+knownrm() {
+  re='^[0-9]+$'
+  if ! [[ $1 =~ $re ]] ; then
+    echo "error: line number missing" >&2;
+  else
+    sed -i '' "$1d" ~/.ssh/known_hosts
+  fi
+}
