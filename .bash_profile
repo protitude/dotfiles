@@ -76,7 +76,7 @@ alias bccp="bundle exec compass compile -e production --force"
 alias bcw="bundle exec compass watch --poll"
 
 #drush Commands
-alias drush-sd="drush sql-dump > ~/$(date +%Y-%m-%d-%H.%M.%S).sql"
+alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
 function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
