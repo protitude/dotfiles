@@ -17,6 +17,7 @@ Plugin 'phpcomplete.vim'
 "Plugin 'SuperTab'
 "Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
+Plugin 'suan/vim-instant-markdown'
 " Drupal Plugins
 Plugin 'http://git.drupal.org/project/vimrc.git', {'name': 'vim-plugin-for-drupal', 'rtp': 'bundle/vim-plugin-for-drupal/'}
 Plugin 'tpope/vim-fugitive'
@@ -45,6 +46,8 @@ filetype plugin on
 " Set the codesniffer args
 let g:phpqa_codesniffer_args = "--standard=Zend"
 let g:phpqa_messdetector_ruleset = "/Users/milesfrance/drush/vendor/phpunit/phpunit/build/phpmd.xml"
+" Slow down markdown preview
+let g:instant_markdown_slow = 1
 " Syntatic settings
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
@@ -80,7 +83,10 @@ set statusline+=%m      "modified flag
 "end status line }}}
 
 " Remove trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * if &ft!~?'markdown'|:%s/\s\+$//e
+
+" Set markdown file type
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " ctr+j will insert break.
 :nnoremap <NL> i<CR><ESC>

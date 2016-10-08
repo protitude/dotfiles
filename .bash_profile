@@ -50,7 +50,7 @@ alias wtf="sudo !!"
 alias gt="git for-each-ref --sort='*authordate' --format='%(refname:short)' refs/tags"
 alias svn-remove="find . -name ".svn" -type d -exec rm -rf {} \;"
 alias dsstore-remove="find . -name '*.DS_Store' -type f -delete"
-alias subl="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias selenium-server="/usr/local/Cellar/selenium-server-standalone/2.49.0/bin/selenium-server"
 
 alias gs='git status'
@@ -75,8 +75,18 @@ alias cw="compass watch --poll"
 alias bccp="bundle exec compass compile -e production --force"
 alias bcw="bundle exec compass watch --poll"
 
+alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.json?results=1 | python -mjson.tool | grep field1"
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+#composer install without xdebug
+alias comp='php -n /usr/local/Cellar/composer/1.0.0-beta1/libexec/composer.phar'
+
 #drush Commands
 alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
+function chromefile () {
+  cat "$1" | xargs open
+}
 function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
@@ -88,15 +98,23 @@ function title() {
   export PROMPT_COMMAND='echo -ne "\033]0;"'$1'"\007"'
 }
 
+function estone() {
+  node -e "require('eddystone-beacon').advertiseUrl('$1');"
+}
+
 source ~/.goto_shortcuts
 function short () {
   shortcut=$(pwd)
   echo 'alias .'$1'="cd '$shortcut'"' >> ~/.goto_shortcuts
   source ~/.bash_profile
 }
-if [ -f "~/Dropbox/programs/bash/profile_sensitive" ]
+if [ -f "$HOME/Dropbox/programs/bash/profile_sensitive" ]
 then
-  source ~/Dropbox/programs/bash/profile_sensitive
+  source "$HOME/Dropbox/programs/bash/profile_sensitive"
+fi
+if [ -f "$HOME/.sensitive_vars" ]
+then
+  source "$HOME/.sensitive_vars"
 fi
 if [ -f "$HOME/.bash_ps1" ]; then
   . "$HOME/.bash_ps1"
@@ -110,3 +128,6 @@ knownrm() {
     sed -i '' "$1d" ~/.ssh/known_hosts
   fi
 }
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
