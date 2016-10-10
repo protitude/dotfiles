@@ -133,4 +133,3 @@ if hash gdate 2>/dev/null; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
-export PLAYBOOK-RAN=1
