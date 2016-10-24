@@ -22,6 +22,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'http://git.drupal.org/project/vimrc.git', {'name': 'vim-plugin-for-drupal', 'rtp': 'bundle/vim-plugin-for-drupal/'}
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'maxboisvert/vim-simple-complete'
 Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
@@ -60,6 +61,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
 set showmode "show current mode down the bottom
 "set tags=/web/cuboulder/data/releases/oit/master/php.tags
 set cursorline          " highlight the current line
+
+"Set autocomplete maxboisvert/vim-simple-complete
+set complete-=t
+set complete-=i
 
 "Setting the status line... {{{
 

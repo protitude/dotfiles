@@ -80,7 +80,7 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 #composer install without xdebug
-alias comp='php -n /usr/local/Cellar/composer/1.0.0-beta1/libexec/composer.phar'
+alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
 #drush Commands
 alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
