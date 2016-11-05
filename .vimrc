@@ -22,7 +22,7 @@ Plugin 'suan/vim-instant-markdown'
 Plugin 'http://git.drupal.org/project/vimrc.git', {'name': 'vim-plugin-for-drupal', 'rtp': 'bundle/vim-plugin-for-drupal/'}
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'maxboisvert/vim-simple-complete'
+" Plugin 'maxboisvert/vim-simple-complete'
 Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
@@ -93,6 +93,10 @@ autocmd BufWritePre * if &ft!~?'markdown'|:%s/\s\+$//e
 " Set markdown file type
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" Automatically turn on spell check and completion for markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
+set complete+=kspell
+
 " ctr+j will insert break.
 :nnoremap <NL> i<CR><ESC>
 
@@ -138,3 +142,4 @@ if has("autocmd")
   augroup END
   autocmd BufNewFile,BufRead *.twig   set syntax=html
 endif
+let g:syntastic_filetype_map = { 'html.twig.drupal': 'twig' }
