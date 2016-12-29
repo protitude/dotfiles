@@ -57,6 +57,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_mode_map = { 'mode': 'active',
             \                   'active_filetypes' : [],
             \                   'passive_filetypes' : ['php'] }
+let g:syntastic_filetype_map = { 'html.twig.drupal': 'twig' }
 " Status Line
 set showmode "show current mode down the bottom
 "set tags=/web/cuboulder/data/releases/oit/master/php.tags
@@ -142,4 +143,3 @@ if has("autocmd")
   augroup END
   autocmd BufNewFile,BufRead *.twig   set syntax=html
 endif
-let g:syntastic_filetype_map = { 'html.twig.drupal': 'twig' }

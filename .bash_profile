@@ -79,6 +79,8 @@ alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.jso
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
+alias bkup-web='cp -R web backups/web-$(date +%Y-%m-%d:%H:%M:%S)'
+
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
@@ -133,3 +135,8 @@ if hash gdate 2>/dev/null; then
     . $(brew --prefix)/etc/bash_completion
   fi
 fi
+
+# Setting PATH for Python 3.5
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH
