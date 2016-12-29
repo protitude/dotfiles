@@ -132,6 +132,11 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Remap caps lock to escape
+# Currently having trouble getting this to work without going through UI
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-591-0 -array '<dict><key>HIDKeyboardModifierMappingSrc</key><integer>30064771113</integer><key>HIDKeyboardModifierMappingDst</key><integer>30064771129</integer></dict>'
+defaults -currentHost write -g com.apple.keyboard.modifiermapping.1452-610-0 -array '<dict><key>HIDKeyboardModifierMappingSrc</key><integer>30064771113</integer><key>HIDKeyboardModifierMappingDst</key><integer>30064771129</integer></dict>'
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
