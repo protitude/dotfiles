@@ -86,6 +86,19 @@ alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
 #drush Commands
 alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
+function lifelog () {
+  FILE="/web/drupal-vm/drupal/cm/lifelog/2017/$(date +%Y%m%d).md"
+  if [ -f $FILE ];
+  then
+    vi $FILE
+  else
+    cd /web/drupal-vm/drupal/cm/lifelog/2017/
+    cp $(ls -t | head -n1) $FILE
+    echo "Created $FILE"
+    sleep 1
+    vi $FILE
+  fi
+}
 function chromefile () {
   cat "$1" | xargs open
 }

@@ -109,6 +109,7 @@ set clipboard=unnamed
 set list listchars=tab:»·,trail:·,nbsp:·
 syntax enable
 colorscheme monokai
+set background=dark
 " Highlight search results
 " set hlsearch
 set hls is ic
