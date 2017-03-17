@@ -86,6 +86,9 @@ alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
 #drush Commands
 alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
+function pifind() {
+  sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
+}
 function lifelog () {
   FILE="/web/drupal-vm/drupal/cm/lifelog/2017/$(date +%Y%m%d).md"
   if [ -f $FILE ];
@@ -106,7 +109,7 @@ function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
 function did () {
-  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
+  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en views_ui -y;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
 }
 
 function title() {
