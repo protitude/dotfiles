@@ -109,7 +109,7 @@ function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
 function did () {
-  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en views_ui -y;drush en devel -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
+  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en views_ui devel update -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
 }
 
 function title() {
