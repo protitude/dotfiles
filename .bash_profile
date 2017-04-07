@@ -90,12 +90,12 @@ function pifind() {
   sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
 }
 function lifelog () {
-  FILE="/web/drupal-vm/drupal/cm/lifelog/2017/$(date +%Y%m%d).md"
+  FILE="/web/cm/lifelog/2017/$(date +%Y%m%d).md"
   if [ -f $FILE ];
   then
     vi $FILE
   else
-    cd /web/drupal-vm/drupal/cm/lifelog/2017/
+    cd /web/cm/lifelog/2017/
     cp $(ls -t | head -n1) $FILE
     echo "Created $FILE"
     sleep 1
@@ -109,7 +109,7 @@ function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
 function did () {
-  drush sql-drop -y;drush sqlc < $1;drush cc all;drush en views_ui devel update -y;drush updb -y;drush dis overlay -y;drush en devel_generate -y;drush sql-sanitize -y;drush uli $2;cowsay 'Import Complete'
+  drush $3 sql-drop -y;drush $3 sqlc < $1;drush $3 cc all;drush $3 en views_ui devel update -y;drush $3 updb -y;drush $3 dis overlay -y;drush $3 en devel_generate -y;drush $3 sql-sanitize -y;drush $3 uli $2;cowsay 'Import Complete'
 }
 
 function title() {
