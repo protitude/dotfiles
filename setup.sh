@@ -13,6 +13,18 @@ then
   echo "linked .bash_profile"
 fi
 
+if [ ! -L ~/.gitconfig]
+then
+  ln -s $(pwd)"/.gitconfig" "$1.gitconfig"
+  echo "linked .gitconfig"
+fi
+
+if [ ! -L ~/.gitignore]
+then
+  ln -s $(pwd)"/gitignore" "$1gitignore"
+  echo "linked .gitignore"
+fi
+
 if [ ! -L ~/.bash_ps1 ]
 then
   ln -s $(pwd)"/.bash_ps1" "$1.bash_ps1"
