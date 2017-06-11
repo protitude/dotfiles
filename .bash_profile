@@ -17,34 +17,6 @@ _complete_ssh_hosts ()
 }
 complete -F _complete_ssh_hosts ssh
 HISTCONTROL=ignoreboth
-#export PATH=~/bin:/usr/local/php5/bin:/Users/milesfrance/pear/bin:$PATH
-
-#if [ -f "$HOME/.bash_ps1" ]; then
-# . "$HOME/.bash_ps1"
-# fi
-#
-#parse_git_branch() {
-#  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-#}
-#pwd_two() {
-#  pwd |rev| awk -F / '{print $1,$2}' | rev | sed s_\ _/_
-#}
-#if [ "$(uname)" == "Darwin" ]; then
-#  env_icon=""
-#elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-#  env_icon="🐧"
-#elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-#  env_icon= "¯\_(ツ)_/¯"
-#fi
-#PS1="$env_icon CM:\$(pwd_two)\$(parse_git_branch):"
-
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# Forcing command to come from latest drush
-#alias drush='~/drush/drush'
-#alias composer='/usr/local/bin/composer/composer.phar'
-
-#export SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
 alias wtf="sudo !!"
 
@@ -79,6 +51,7 @@ alias bcw="bundle exec compass watch --poll"
 alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.json?results=1 | python -mjson.tool | grep field1"
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias sync-oitfiles='rsync -r --exclude="docs" --exclude="files" --exclude="printers" --exclude="overview-docs" --exclude="restricted" --include="*/" --include="*.[Jj][Pp][Gg]" --include="*.[Pp][Nn][Gg]" --exclude="*" oit:/home/cuboulderoit/prod/sites/default/files/ /web/oit/docroot/sites/default/files/'
 
 alias bkup-web='cp -R web backups/web-$(date +%Y-%m-%d:%H:%M:%S)'
 
@@ -86,7 +59,6 @@ alias bkup-web='cp -R web backups/web-$(date +%Y-%m-%d:%H:%M:%S)'
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
 #drush Commands
-alias drush-sd="drush sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql"
 function pifind() {
   sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
 }
@@ -103,8 +75,18 @@ function lifelog () {
     vi $FILE
   fi
 }
+# Super useful Docker container oneshots.
+# Usage: dockrun, or dockrun [centos7|fedora24|debian8|ubuntu1404|etc.]
+# https://www.jeffgeerling.com/blog/2017/dockrun-oneshot-quick-local-environments
+dockrun() {
+    docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
+  }
+
 function chromefile () {
   cat "$1" | xargs open
+}
+function drush-sd () {
+  drush "$1" sql-dump > $(date +%Y-%m-%d-%H.%M.%S).sql
 }
 function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
@@ -158,3 +140,8 @@ fi
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
+# Tmux stuff
+#if [[ \$TMUX ]];
+#  then
+    #source ~/.tmux-git;
+#fi

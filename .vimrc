@@ -29,10 +29,17 @@ Plugin 'majutsushi/tagbar'
 Plugin 'evidens/vim-twig'
 Plugin 'joonty/vdebug'
 Plugin 'surround.vim'
+Plugin 'vimwiki/vimwiki'
 
 " Persistent Undo: https://jovicailic.org/2017/04/vim-persistent-undo
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
+
+" Set vimwiki to markdown
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
