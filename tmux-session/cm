@@ -1,0 +1,15 @@
+#!/bin/sh
+tmux new-session -d -s cm -n root
+tmux split-window -v
+tmux new-window -t cm:1 -n modules
+tmux new-window -t cm:2 -n themes
+tmux split-window -v -p 20
+
+tmux send-keys -t cm:0.0 ".cm;vagrant up;vagrant ssh" C-m
+tmux send-keys -t cm:0.1 ".cm;git status" C-m
+tmux send-keys -t cm:1 ".cm;cd drupal-site-files/zap/modules/custom;ls" C-m
+tmux send-keys -t cm:2.0 ".cm;cd drupal-site-files/zap/themes/ant/sass;ls" C-m
+tmux send-keys -t cm:2.1 ".cm;cd drupal-site-files/zap/themes/ant;cat package.json" C-m
+
+tmux select-window -t cm:0
+tmux -2 attach-session -d
