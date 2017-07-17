@@ -92,7 +92,7 @@ function dlc () {
   drush uli "$1" | xargs open -a /Applications/Google\ Chrome.app
 }
 function did () {
-  drush $3 sql-drop -y;drush $3 sqlc < $1;drush $3 cc all;drush $3 en views_ui devel update -y;drush $3 updb -y;drush $3 dis overlay -y;drush $3 en devel_generate -y;drush $3 sql-sanitize -y;drush $3 uli $2;cowsay 'Import Complete'
+  drush $3 sql-drop -y;drush $3 sqlc < $1;drush $3 cc all;drush $3 en views_ui devel update -y;drush $3 updb -y;drush $3 dis overlay -y;drush $3 en devel_generate -y;drush $3 sql-sanitize -y;drush $3 uli $2;vset acquia_key $ACQUIAKEY;cowsay 'Import Complete'
 }
 
 function title() {
