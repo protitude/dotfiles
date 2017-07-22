@@ -13,6 +13,12 @@ then
   echo "linked .bash_profile"
 fi
 
+if [ ! -L $1.ansible.cfg ]
+then
+  ln -s $(pwd)"/.ansible.cfg" "$1.ansible.cfg"
+  echo "linked .ansible.cfg"
+fi
+
 if [ ! -L $1.gitconfig ]
 then
   ln -s $(pwd)"/.gitconfig" "$1.gitconfig"
