@@ -1,0 +1,15 @@
+#!/bin/sh
+tmux new-session -d -s aspirations -n root
+tmux split-window -v
+tmux new-window -t asp:1 -n modules
+tmux new-window -t asp:2 -n themes
+tmux split-window -v -p 20
+
+tmux send-keys -t asp:0.0 "cd /web/drupal-vm/drupal/aspirations;vagrant up;vagrant ssh" C-m
+tmux send-keys -t asp:0.1 "cd /web/drupal-vm/drupal/aspirations;git status" C-m
+tmux send-keys -t asp:1 "cd /web/drupal-vm/drupal/aspirations/sites/all/modules; ls" C-m
+tmux send-keys -t asp:2.0 "cd /web/drupal-vm/drupal/aspirations/sites/all/themes/aspirations/sass;ls" C-m
+tmux send-keys -t asp:2.1 "cd /web/drupal-vm/drupal/aspirations/sites/all/themes/aspirations;compass watch" C-m
+
+tmux select-window -t asp:0
+tmux -2 attach-session -d
