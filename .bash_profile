@@ -82,6 +82,11 @@ dockrun() {
     docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
   }
 
+function chrometrust () {
+  rm -fR /tmp/chrometrust
+  mkdir /tmp/chrometrust
+  /Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary --user-data-dir=/tmp/chrometrust --unsafely-treat-insecure-origin-as-secure=$1
+}
 function chromefile () {
   cat "$1" | xargs open
 }
@@ -139,4 +144,6 @@ fi
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
+# Load gems into home directory
+export GEM_HOME=/Users/milesfrance/.gem
 

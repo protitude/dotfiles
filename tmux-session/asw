@@ -1,0 +1,15 @@
+#!/bin/sh
+tmux new-session -d -s asw -n root
+tmux split-window -v
+tmux new-window -t asw:1 -n modules
+tmux new-window -t asw:2 -n themes
+tmux split-window -v -p 20
+
+tmux send-keys -t asw:0.0 "cd /web/asw;vagrant up;drush @asw.dev uli;vagrant ssh" C-m
+tmux send-keys -t asw:0.1 "cd /web/asw/web;git status" C-m
+tmux send-keys -t asw:1 "cd /web/asw/web/sites/all/modules;ls" C-m
+tmux send-keys -t asw:2.0 "cd /web/asw/web/sites/all/themes;ls" C-m
+tmux send-keys -t asw:2.1 "cd /web/asw/web/sites/all/themes;cat package.json" C-m
+
+tmux select-window -t asw:0
+tmux -2 attach-session -d
