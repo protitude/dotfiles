@@ -5,7 +5,7 @@ tmux new-window -t asp:1 -n modules
 tmux new-window -t asp:2 -n themes
 tmux split-window -v -p 20
 
-tmux send-keys -t asp:0.0 "cd /web/drupal-vm/drupal/aspirations;vagrant up;vagrant ssh" C-m
+tmux send-keys -t asp:0.0 "cd /web/drupal-vm/drupal/aspirations;vagrant up;drush @aspirations.dev uli;vagrant ssh" C-m
 tmux send-keys -t asp:0.1 "cd /web/drupal-vm/drupal/aspirations;git status" C-m
 tmux send-keys -t asp:1 "cd /web/drupal-vm/drupal/aspirations/sites/all/modules; ls" C-m
 tmux send-keys -t asp:2.0 "cd /web/drupal-vm/drupal/aspirations/sites/all/themes/aspirations/sass;ls" C-m

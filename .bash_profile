@@ -63,12 +63,12 @@ function pifind() {
   sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
 }
 function lifelog () {
-  FILE="/web/cm/lifelog/2017/$(date +%Y%m%d).md"
+  FILE="/web/cm/lifelog/2018/$(date +%Y%m%d).md"
   if [ -f $FILE ];
   then
     vi $FILE
   else
-    cd /web/cm/lifelog/2017/
+    cd /web/cm/lifelog/2018/
     cp $(ls -t | head -n1) $FILE
     echo "Created $FILE"
     sleep 1

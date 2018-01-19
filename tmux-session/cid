@@ -3,7 +3,7 @@ tmux new-session -d -s cid
 tmux split-window -v
 tmux new-window -t cid:1 -n zap
 
-tmux send-keys -t cid:0.0 ".cid;vagrant up;vagrant ssh" C-m
+tmux send-keys -t cid:0.0 ".cid;vagrant up;drush @cid.dev uli --name='Miles France';vagrant ssh" C-m
 tmux send-keys -t cid:0.1 ".cid;git status" C-m
 tmux send-keys -t cid:1 ".cid;cd drupal-site-files/zap;ls" C-m
 
