@@ -58,6 +58,11 @@ alias bkup-web='cp -R web backups/web-$(date +%Y-%m-%d:%H:%M:%S)'
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
+
+function tm {
+  mv $1 /tmp
+}
+
 #drush Commands
 function pifind() {
   sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
@@ -79,8 +84,8 @@ function lifelog () {
 # Usage: dockrun, or dockrun [centos7|fedora24|debian8|ubuntu1404|etc.]
 # https://www.jeffgeerling.com/blog/2017/dockrun-oneshot-quick-local-environments
 dockrun() {
-    docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
-  }
+  docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
+}
 
 function chrometrust () {
   rm -fR /tmp/chrometrust
@@ -146,4 +151,5 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 # Load gems into home directory
 export GEM_HOME=/Users/milesfrance/.gem
+export DRUSH_LAUNCHER_FALLBACK=~/.composer/vendor/bin/drush
 

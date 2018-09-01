@@ -5,7 +5,7 @@ tmux new-window -t oit:1 -n modules
 tmux new-window -t oit:2 -n themes
 tmux split-window -v -p 20
 
-tmux send-keys -t oit:0.0 ".oit;vagrant up;drush @oit.dev.colorado.edu uli france;vagrant ssh" C-m
+tmux send-keys -t oit:0.0 ".oit;vagrant up;drush @oit.local uli france;vagrant ssh" C-m
 tmux send-keys -t oit:0.1 ".oit;git status" C-m
 tmux send-keys -t oit:1 ".oit-modules; ls" C-m
 tmux send-keys -t oit:2.0 ".oit-cassowary;cd sass;ls" C-m

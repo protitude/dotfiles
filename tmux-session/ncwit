@@ -1,0 +1,15 @@
+#!/bin/sh
+tmux new-session -d -s ncwit -n root
+tmux split-window -v
+tmux new-window -t ncwit:1 -n modules
+tmux new-window -t ncwit:2 -n themes
+tmux split-window -v -p 20
+
+tmux send-keys -t ncwit:0.0 "cd /web/drupal-vm;rm config.yml;ln -s scripts/ncwit.config.yml config.yml;cd drupal/ncwit;vagrant up;drush @local.ncwit.dev uli;vagrant ssh" C-m
+tmux send-keys -t ncwit:0.1 "cd /web/drupal-vm/drupal/ncwit;git status" C-m
+tmux send-keys -t ncwit:1 "cd /web/drupal-vm/drupal/ncwit/sites/all/modules; ls" C-m
+tmux send-keys -t ncwit:2.0 "cd /web/drupal-vm/drupal/ncwit/sites/all/themes/ncwit/sass;ls" C-m
+tmux send-keys -t ncwit:2.1 "cd /web/drupal-vm/drupal/ncwit/sites/all/themes/ncwit" C-m
+
+tmux select-window -t ncwit:0
+tmux -2 attach-session -d

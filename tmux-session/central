@@ -1,0 +1,15 @@
+#!/bin/sh
+tmux new-session -d -s central -n root
+tmux split-window -v
+tmux new-window -t central:1 -n modules
+tmux new-window -t central:2 -n themes
+tmux split-window -v -p 20
+
+tmux send-keys -t central:0.0 "cd /web/drupal-vm;rm config.yml;ln -s scripts/ncwit.config.yml config.yml;cd drupal/central-aspirations;vagrant up;vagrant ssh" C-m
+tmux send-keys -t central:0.1 "cd /web/drupal-vm/drupal/central-aspirations;git status" C-m
+tmux send-keys -t central:1 "cd /web/drupal-vm/drupal/central-aspirations/sites/all/modules; ls" C-m
+tmux send-keys -t central:2.0 "cd /web/drupal-vm/drupal/central-aspirations/sites/all/themes/ncwit/sass;ls" C-m
+tmux send-keys -t central:2.1 "cd /web/drupal-vm/drupal/central-aspirations/sites/all/themes/central" C-m
+
+tmux select-window -t central:0
+tmux -2 attach-session -d
