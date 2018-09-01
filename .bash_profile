@@ -21,7 +21,6 @@ HISTCONTROL=ignoreboth
 alias wtf="sudo !!"
 
 alias gt="git for-each-ref --sort='*authordate' --format='%(refname:short)' refs/tags"
-alias svn-remove="find . -name ".svn" -type d -exec rm -rf {} \;"
 alias dsstore-remove="find . -name '*.DS_Store' -type f -delete"
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias selenium-server="/usr/local/Cellar/selenium-server-standalone/2.49.0/bin/selenium-server"
@@ -51,19 +50,14 @@ alias bcw="bundle exec compass watch --poll"
 alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.json?results=1 | python -mjson.tool | grep field1"
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-alias sync-oitfiles='rsync -r --exclude="docs" --exclude="files" --exclude="printers" --exclude="overview-docs" --exclude="restricted" --include="*/" --include="*.[Jj][Pp][Gg]" --include="*.[Pp][Nn][Gg]" --exclude="*" oit:/home/cuboulderoit/prod/sites/default/files/ /web/oit/docroot/sites/default/files/'
-
-alias bkup-web='cp -R web backups/web-$(date +%Y-%m-%d:%H:%M:%S)'
 
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
-
 
 function tm {
   mv $1 /tmp
 }
 
-#drush Commands
 function pifind() {
   sudo nmap -sP 192.168.1.0/24 | awk '/^Nmap/{ip=$NF}/B8:27:EB/{print ip}'
 }
