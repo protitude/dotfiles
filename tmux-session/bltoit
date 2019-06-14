@@ -1,0 +1,17 @@
+#!/bin/sh
+tmux new-session -d -s "bltoit" -n root
+tmux split-window -v
+tmux new-window -t bltoit:1 -n modules
+tmux new-window -t bltoit:2 -n themes
+tmux split-window -v -p 20
+tmux new-window -t bltoit:3 -n todo
+
+tmux send-keys -t bltoit:0.0 "cd /web/bltoit;vagrant up;vagrant ssh" C-m
+tmux send-keys -t bltoit:0.1 "cd /web/bltoit;git status" C-m
+tmux send-keys -t bltoit:1 "cd /web/bltoit/docroot/modules; ls" C-m
+tmux send-keys -t bltoit:2.0 "cd /web/bltoit/docroot/themes;ls" C-m
+tmux send-keys -t bltoit:2.1 "cd /web/bltoit/docroot/themes" C-m
+tmux send-keys -t bltoit:3 "cd /web/bltoit;vi todo.md" C-m
+
+tmux select-window -t bltoit:0
+tmux -2 attach-session -d

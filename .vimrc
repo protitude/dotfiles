@@ -27,9 +27,12 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'evidens/vim-twig'
-Plugin 'joonty/vdebug'
+" Plugin 'joonty/vdebug'
 Plugin 'surround.vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'Lokaltog/powerline'
+" https://github.com/adoy/vim-php-refactoring-toolbox
+Plugin 'adoy/vim-php-refactoring-toolbox'
 
 " Persistent Undo: https://jovicailic.org/2017/04/vim-persistent-undo
 set undofile " Maintain undo history between sessions

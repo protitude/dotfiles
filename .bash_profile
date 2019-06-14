@@ -47,7 +47,7 @@ alias cw="compass watch --poll"
 alias bccp="bundle exec compass compile -e production --force"
 alias bcw="bundle exec compass watch --poll"
 
-alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.json?results=1 | python -mjson.tool | grep field1"
+alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.json?results=1 | python -mjson.tool | jq -r '.feeds | map(.field1)'|grep '[0-9]\{2\}.[0-9]'"
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
@@ -146,4 +146,30 @@ export PATH
 # Load gems into home directory
 export GEM_HOME=/Users/milesfrance/.gem
 export DRUSH_LAUNCHER_FALLBACK=~/.composer/vendor/bin/drush
+export PATH=$PATH:/Users/milesfrance/.gem/bin
+# Use php 7.2 via homebrew
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+# npm: https://gist.github.com/DanHerbert/9520689
+export PATH="$HOME/.npm-packages/bin:$PATH"
 
+function blt() {
+  if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
+    PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
+  elif [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/blt" ]; then
+    $PROJECT_ROOT/vendor/bin/blt "$@"
+
+  # Check for local BLT.
+  elif [ -f "./vendor/bin/blt" ]; then
+    ./vendor/bin/blt "$@"
+
+  else
+    echo "You must run this command from within a BLT-generated project."
+    return 1
+  fi
+}
