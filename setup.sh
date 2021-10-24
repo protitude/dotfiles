@@ -1,14 +1,14 @@
 #!/bin/bash
-files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".ansible.cfg" ".gitconfig" ".gitignore" ".bash_ps1" ".vim" ".vimrc" ".osx" ".tmux.conf" ".goto_shortcuts")
-
-for i in "${files[@]}"
-do
-  if [ ! -L $1$i ]
-  then
-    ln -s $(pwd)"/$i" "$1$i"
-    echo "linked $i"
-  fi
-done
+#files=( ".tmux-git" ".tmux-git.conf" ".tmux.conf" ".tmux.theme.sh" ".bash_profile" ".ansible.cfg" ".gitconfig" ".gitignore" ".bash_ps1" ".vim" ".vimrc" ".osx" ".tmux.conf" ".goto_shortcuts" ".zsh" ".zshrc")
+#
+#for i in "${files[@]}"
+#do
+#  if [ ! -L $1$i ]
+#  then
+#    ln -s $(pwd)"/$i" "$1$i"
+#    echo "linked $i"
+#  fi
+#done
 
 if [ ! -d bundle ]
 then
