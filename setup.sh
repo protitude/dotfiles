@@ -10,12 +10,12 @@
 #  fi
 #done
 
-if [ ! -d bundle ]
-then
-  mkdir .vim/bundle
-  git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
-  npm -g install instant-markdown-d
-fi
+#if [ ! -d bundle ]
+#then
+#  mkdir .vim/bundle
+#  git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/Vundle.vim
+#  npm -g install instant-markdown-d
+#fi
 
 if [ ! -L $1.vim/bundle/vim-multiple-cursors ]
 then
