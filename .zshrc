@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX=true
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #export TERM="xterm-256color"
@@ -82,7 +83,7 @@ precmd() { print '' }
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx z)
+plugins=(git macos z)
 
 source $ZSH/oh-my-zsh.sh
 source ~/.bash_profile
@@ -136,3 +137,11 @@ function blt() {
 }
 #export PATH="/usr/local/opt/node@12/bin:$PATH"
 eval "$(starship init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

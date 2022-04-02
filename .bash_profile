@@ -103,6 +103,10 @@ function title() {
   export PROMPT_COMMAND='echo -ne "\033]0;"'$1'"\007"'
 }
 
+function motion-backup() {
+  rsync -azv /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/ chromebox:/home/protitude/godzilla/Motion-vids-backup/ && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/*.7z && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/*
+}
+
 function estone() {
   node -e "require('eddystone-beacon').advertiseUrl('$1');"
 }
