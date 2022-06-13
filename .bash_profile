@@ -51,6 +51,8 @@ alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.jso
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
+alias motion-basement='~/Documents/backupBasementCamera.sh'
+
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
@@ -78,7 +80,7 @@ function lifelog () {
 # Usage: dockrun, or dockrun [centos7|fedora24|debian8|ubuntu1404|etc.]
 # https://www.jeffgeerling.com/blog/2017/dockrun-oneshot-quick-local-environments
 dockrun() {
-  docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
+  docker run -it geerlingguy/docker-"${1:-ubuntu1804}"-ansible /bin/bash
 }
 
 function chrometrust () {
@@ -104,7 +106,7 @@ function title() {
 }
 
 function motion-backup() {
-  rsync -azv /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/ chromebox:/home/protitude/godzilla/Motion-vids-backup/ && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/*.7z && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/*
+  rsync -azv /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/ chromebox:/home/protitude/godzilla/Motion-vids-backup/back/ && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/*
 }
 
 function estone() {
@@ -152,7 +154,7 @@ export GEM_HOME=/Users/milesfrance/.gem
 export DRUSH_LAUNCHER_FALLBACK=~/.composer/vendor/bin/drush
 export PATH=$PATH:/Users/milesfrance/.gem/bin
 # Use php 7.2 via homebrew
-export PATH="/usr/local/opt/php@7.2/bin:$PATH"
+export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 # npm: https://gist.github.com/DanHerbert/9520689
 export PATH="$HOME/.npm-packages/bin:$PATH"
 

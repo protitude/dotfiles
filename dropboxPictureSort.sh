@@ -20,11 +20,17 @@ months=(
 "11-November"
 )
 month=$(date +%m)
+year=$(date +%Y)
+if ($month == 01) then
+  year=$(($year-1))
+fi
 lastMonth=$(($month-1))
 folder=${months[$lastMonth]}
 cd "/Users/milesfrance/Dropbox/Camera Uploads"
 # Create folder of the month
-mkdir $folder
+mkdir -p "$year/$folder"
 # Move files into folder
-mv *.jpg $folder
-mv *.mp4 $folder
+mv *.jpg "$year/$folder"
+mv *.mp4 "$year/$folder"
+mv *.mpeg "$year/$folder"
+rsync -azv "$year/$folder" chromebox:/home/protitude/elements/picts/CellPhotos/$year
