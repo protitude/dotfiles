@@ -51,7 +51,7 @@ alias knox-temp="curl -s https://api.thingspeak.com/channels/132817/fields/1.jso
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
-alias motion-basement='~/Documents/backupBasementCamera.sh'
+alias motion-basement='~/Documents/dotfiles/backupBasementCamera.sh'
 
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
