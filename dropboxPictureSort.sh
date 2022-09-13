@@ -1,8 +1,11 @@
+#!/bin/bash
+
 # Installed as crontab to run monthly
 # 00 17 1 * *
 # Open Dropbox
 open -a "Dropbox"
 # Wait 10 minutes to open and sync
+
 sleep 600
 
 months=(
@@ -21,16 +24,19 @@ months=(
 )
 month=$(date +%m)
 year=$(date +%Y)
-if ($month == 01) then
-  year=$(($year-1))
+echo $month
+if [ $month == 01 ]; then
+  year=$((10#$year-1))
 fi
-lastMonth=$(($month-1))
+lastMonth="$((10#$month-1))"
 folder=${months[$lastMonth]}
+echo $folder
 cd "/Users/milesfrance/Dropbox/Camera Uploads"
 # Create folder of the month
 mkdir -p "$year/$folder"
 # Move files into folder
 mv *.jpg "$year/$folder"
+mv *.png "$year/$folder"
 mv *.mp4 "$year/$folder"
 mv *.mpeg "$year/$folder"
 rsync -azv "$year/$folder" chromebox:/home/protitude/elements/picts/CellPhotos/$year
