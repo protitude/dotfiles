@@ -16,6 +16,8 @@
 #  return 0
 #}
 #complete -F _complete_ssh_hosts ssh
+USER=$(whoami)
+
 HISTCONTROL=ignoreboth
 
 alias wtf="sudo !!"
@@ -106,7 +108,7 @@ function title() {
 }
 
 function motion-backup() {
-  rsync -azv /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/ chromebox:/home/protitude/godzilla/Motion-vids-backup/back/ && rm -fR /Users/milesfrance/Dropbox/Apps/home-rpi/motionvids/back/*
+  rsync -azv /Users/$USER/Dropbox/Apps/home-rpi/motionvids/back/ chromebox:/home/protitude/godzilla/Motion-vids-backup/back/ && rm -fR /Users/$USER/Dropbox/Apps/home-rpi/motionvids/back/*
 }
 
 function estone() {
@@ -145,14 +147,10 @@ if hash gdate 2>/dev/null; then
   fi
 fi
 
-# Setting PATH for Python 3.5
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
 # Load gems into home directory
-export GEM_HOME=/Users/milesfrance/.gem
+export GEM_HOME=/Users/$USER/.gem
 export DRUSH_LAUNCHER_FALLBACK=~/.composer/vendor/bin/drush
-export PATH=$PATH:/Users/milesfrance/.gem/bin
+export PATH=$PATH:/Users/$USER/.gem/bin
 # Use php 7.2 via homebrew
 export PATH="/usr/local/opt/php@7.4/bin:$PATH"
 # npm: https://gist.github.com/DanHerbert/9520689

@@ -17,7 +17,8 @@ set -g status-bg colour233
 set -g status-left-bg colour233
 set -g status-left-fg colour243
 set -g status-left-length 40
-set -g status-left "#[fg=colour232,bg=colour39,bold] ♟ #S #[fg=colour39,bg=colour240,nobold]#[fg=colour233,bg=colour240] #(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') #[fg=colour240,bg=colour235]#[fg=colour240,bg=colour235] #I:#P #[fg=colour235,bg=colour233,nobold]"
+#set -g status-left "#[fg=colour232,bg=colour39,bold] ♟ #S #[fg=colour39,bg=colour240,nobold]#[fg=colour233,bg=colour240] #(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/') #[fg=colour240,bg=colour235]#[fg=colour240,bg=colour235] #I:#P #[fg=colour235,bg=colour233,nobold]"
+set -g status-left "🫠"
 
 # Right side of status bar
 set -g status-right-bg colour233

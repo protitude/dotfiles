@@ -4,7 +4,8 @@ ZSH_DISABLE_COMPFIX=true
 #export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/milesfrance/.oh-my-zsh"
+USER=$(whoami)
+export ZSH="/Users/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -138,8 +139,7 @@ function blt() {
 #export PATH="/usr/local/opt/node@12/bin:$PATH"
 eval "$(starship init zsh)"
 eval $(thefuck --alias oi)
-
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
