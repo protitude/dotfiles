@@ -31,11 +31,12 @@ fi
 lastMonth="$((10#$month-1))"
 folder=${months[$lastMonth]}
 echo $folder
-cd "/Users/milesfrance/Dropbox/Camera Uploads"
+cd "/Users/france/Library/CloudStorage/Dropbox/Camera Uploads"
 # Create folder of the month
 mkdir -p "$year/$folder"
 # Move files into folder
 mv *.jpg "$year/$folder"
+mv *.jpeg "$year/$folder"
 mv *.png "$year/$folder"
 mv *.mp4 "$year/$folder"
 mv *.mpeg "$year/$folder"

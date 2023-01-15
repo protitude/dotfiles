@@ -136,7 +136,6 @@ function blt() {
     return 1
   fi
 }
-#export PATH="/usr/local/opt/node@12/bin:$PATH"
 eval "$(starship init zsh)"
 eval $(thefuck --alias oi)
 export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
@@ -145,4 +144,5 @@ export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/php@8.1/bin:$PATH"
 
