@@ -1,6 +1,7 @@
 [user]
   email = miles.france@gmail.com
   name = protitude
+	signingkey = /Users/france/.ssh/id_ed25519_sk.pub
 [core]
   excludesfile = /Users/france/.gitignore
 [alias]
@@ -39,3 +40,5 @@
     cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
