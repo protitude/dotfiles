@@ -82,7 +82,7 @@ function lifelog () {
 # Usage: dockrun, or dockrun [centos7|fedora24|debian8|ubuntu1404|etc.]
 # https://www.jeffgeerling.com/blog/2017/dockrun-oneshot-quick-local-environments
 dockrun() {
-  docker run -it geerlingguy/docker-"${1:-ubuntu1804}"-ansible /bin/bash
+  docker run -it geerlingguy/docker-"${1:-ubuntu2204}"-ansible /bin/bash
 }
 
 function chrometrust () {
