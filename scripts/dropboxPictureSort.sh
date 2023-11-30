@@ -40,4 +40,5 @@ mv *.jpeg "$year/$folder"
 mv *.png "$year/$folder"
 mv *.mp4 "$year/$folder"
 mv *.mpeg "$year/$folder"
-rsync -azv "$year/$folder" chromebox:/home/protitude/elements/picts/CellPhotos/$year
+rsync -azv "$year/$folder" protitude-pi-worker:/mnt/shaq/picts/CellPhotos/$year
+cp -R "$year/$folder" /Volumes/godzilla/picts/CellPhotos/$year

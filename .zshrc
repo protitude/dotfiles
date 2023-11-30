@@ -136,6 +136,14 @@ function blt() {
     return 1
   fi
 }
+function meeting() {
+  open /Applications/zoom.us.app
+  open /Applications/Camo\ Studio.app
+}
+function ragequitmeeting() {
+  osascript -e 'quit app "zoom.us.app"'
+  osascript -e 'quit app "Camo Studio.app"'
+}
 eval "$(starship init zsh)"
 eval $(thefuck --alias oi)
 export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
