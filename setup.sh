@@ -22,3 +22,8 @@ then
   vim +PluginInstall +qall
 fi
 
+if [ ! -L ~/.config/rclone/rclone.conf ]
+then
+  ln -s /Volumes/Docs/rclone.conf ~/.config/rclone/rclone.conf
+fi
+

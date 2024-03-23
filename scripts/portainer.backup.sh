@@ -9,9 +9,7 @@ rm -fR /Volumes/portainer-volume/volumes.7z
 rm -fR volumes
 mv volumes.7z /Volumes/portainer-volumes
 hdiutil detach /Volumes/portainer-volumes
-tar -czf portainer-volumes.sparsebundle.tgz ~/Documents/portainer-volumes.sparsebundle
-#rclone rm cu_onedrive_crypt:bkup/portainer-volumes.sparsebundle.tgz
-#rclone copy portainer-volumes.sparsebundle.tgz cu_onedrive_crypt:bkup
-rclone rm dropbox_crypt:portainer/portainer-volumes.sparsebundle.tgz
-rclone copy portainer-volumes.sparsebundle.tgz dropbox_crypt:portainer/
+tar -czf portainer-volumes.sparsebundle.tgz /Volumes/godzilla/bkup/portainer-volumes.sparsebundle
+ssh protitude-pi-worker "rm -fR /mnt/shaq/bkup/portainer-volumes.sparsebundle.tgz"
+rsync -azv --progress portainer-volumes.sparsebundle.tgz protitude-pi-worker:/mnt/shaq/bkup/
 rm portainer-volumes.sparsebundle.tgz

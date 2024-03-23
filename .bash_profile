@@ -121,9 +121,9 @@ function short () {
   echo 'alias .'$1'="cd '$shortcut'"' >> ~/.goto_shortcuts
   source ~/.bash_profile
 }
-if [ -f "$HOME/Library/CloudStorage/Dropbox/programs/bash/profile_sensitive" ]
+if [ -f "$HOME/Dropbox/programs/bash/profile_sensitive" ]
 then
-  source "$HOME/Library/CloudStorage/Dropbox/programs/bash/profile_sensitive"
+  source "$HOME/Dropbox/programs/bash/profile_sensitive"
 fi
 if [ -f "$HOME/.sensitive_vars" ]
 then
