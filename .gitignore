@@ -3,3 +3,4 @@
 Thumbs.db
 .vim/bundle/*
 .vim/.netrwhist
+scripts/toggl/projects.json

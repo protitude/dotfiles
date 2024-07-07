@@ -55,6 +55,8 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 
 alias motion-basement='~/Documents/dotfiles/backupBasementCamera.sh'
 
+alias tt='~/Documents/dotfiles/scripts/toggl/toggl-lookup.sh'
+
 #composer install without xdebug
 alias comp='php -n /usr/local/Cellar/composer/1.2.1_1/libexec/composer.phar'
 
@@ -177,3 +179,6 @@ export PATH="$HOME/.npm-packages/bin:$PATH"
 #    return 1
 #  fi
 #}
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/france/.cache/lm-studio/bin"

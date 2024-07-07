@@ -115,6 +115,11 @@ source ~/.bash_profile
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+alias v="nvim"
+alias vi="nvim"
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+export EDITOR=nvim
+
 function blt() {
   if [[ ! -z ${AH_SITE_ENVIRONMENT} ]]; then
     PROJECT_ROOT="/var/www/html/${AH_SITE_GROUP}.${AH_SITE_ENVIRONMENT}"
@@ -154,3 +159,9 @@ export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/php@8.1/bin:$PATH"
 
+eval "$(gh copilot alias -- zsh)"
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/Users/france/.cache/lm-studio/bin"
+
+# Lando
+export PATH="/Users/france/.lando/bin${PATH+:$PATH}"; #landopath

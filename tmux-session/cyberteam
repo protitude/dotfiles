@@ -1,17 +1,17 @@
 #!/bin/sh
 tmux new-session -d -s cyberteam -n root
 tmux split-window -v
-tmux new-window -t oit:1 -n modules
-tmux new-window -t oit:2 -n themes
+tmux new-window -t cyberteam:1 -n modules
+tmux new-window -t cyberteam:2 -n themes
 tmux split-window -v -p 20
-tmux new-window -t oit:3 -n todo
+tmux new-window -t cyberteam:3 -n todo
 
-tmux send-keys -t oit:0.0 ".cyberteam;lando start;lando blt amp:uli" C-m
-tmux send-keys -t oit:0.1 ".cyberteam;git status" C-m
-tmux send-keys -t oit:1 ".cyberteam;cd web/modules/custom" C-m
-tmux send-keys -t oit:2.0 ".cyberteam;cd web/themes" C-m
-tmux send-keys -t oit:2.1 ".cyberteam;cd web/themes" C-m
-tmux send-keys -t oit:3 ".cyberteam;vi" C-m
+tmux send-keys -t cyberteam:0.0 ".cyberteam;lando start;lando blt amp:uli" C-m
+tmux send-keys -t cyberteam:0.1 ".cyberteam;git fetch;git status" C-m
+tmux send-keys -t cyberteam:1 ".cyberteam;cd web/modules/custom" C-m
+tmux send-keys -t cyberteam:2.0 ".cyberteam;cd web/themes" C-m
+tmux send-keys -t cyberteam:2.1 ".cyberteam;cd web/themes" C-m
+tmux send-keys -t cyberteam:3 ".cyberteam;vi" C-m
 
 tmux select-window -t cyberteam:0
 tmux -2 attach-session -d

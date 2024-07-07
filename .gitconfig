@@ -5,6 +5,7 @@
 [core]
   excludesfile = /Users/france/.gitignore
 	ignorecase = false
+	editor = nvim
 [alias]
   prune = fetch --prune
   # Because I constantly forget how to do this
