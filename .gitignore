@@ -4,3 +4,6 @@ Thumbs.db
 .vim/bundle/*
 .vim/.netrwhist
 scripts/toggl/projects.json
+.config/nvim/after/
+.config/nvim/pack/
+.config/nvim/plugin/
