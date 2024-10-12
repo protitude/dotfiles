@@ -1,6 +1,6 @@
-alias .oit="cd ~/Documents/web/dingo"
+alias .oit="cd ~/Documents/web/oit/oit_dingo"
 alias .tmux="cd ~/Documents/dotfiles/tmux-session"
-alias .oit-modules="cd ~/Documents/web/dingo/docroot/modules"
+alias .oit-modules="cd ~/Documents/web/oit/oit_dingo/docroot/modules"
 alias .cid="cd ~/Documents/web/cid"
 alias .cyberteam="cd ~/Documents/web/cyberteam_drupal"
 alias .cyberteam-modules="cd ~/Documents/web/cyberteam_drupal/web/modules/custom"
