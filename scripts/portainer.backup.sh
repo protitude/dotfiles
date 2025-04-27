@@ -3,7 +3,9 @@ set -e
 
 hdiutil attach /Volumes/godzilla/bkup/portainer-volumes.sparsebundle
 cd ~/Downloads
-rsync -azv --progress --rsync-path="sudo rsync" protitude-pi-worker:/var/lib/docker/volumes/ volumes
+rsync -azv --progress --rsync-path="sudo rsync" protitude-pi-worker:/var/lib/docker/volumes/ volumes/pi-worker
+rsync -azv --progress --rsync-path="sudo rsync" ubuntu-workstation-portainer:/var/lib/docker/volumes/ volumes/ubuntu-workstation
+
 7z a volumes.7z volumes
 rm -fR /Volumes/portainer-volume/volumes.7z
 rm -fR volumes

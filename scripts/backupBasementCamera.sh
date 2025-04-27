@@ -15,6 +15,7 @@ cd ..
 
 ssh protitude-pi-worker "mkdir /mnt/shaq/bkup/motion-vids/basement/$last_month_year"
 rsync -azv $last_month.7z protitude-pi-worker:/mnt/shaq/bkup/motion-vids/basement/$last_month_year/
+rsync -azv $last_month.7z mainebackups:/mnt/wd-catzilla/bkup/motion-vids/$last_month_year/
 rclone purge dropbox_crypt:home-rpi/motionvids/basement/$last_month_year/$last_month
 rm -fR $last_month
 afplay /System/Library/Sounds/Ping.aiff -v 2

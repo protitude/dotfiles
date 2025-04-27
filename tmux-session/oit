@@ -7,7 +7,7 @@ tmux split-window -v
 tmux resize-pane -D 10
 tmux new-window -t oit:3 -n notes
 
-tmux send-keys -t oit:0.0 ".oit;lando start;lando blt oit:uli" C-m
+tmux send-keys -t oit:0.0 ".oit;ddev start;robo uli" C-m
 tmux send-keys -t oit:0.1 ".oit;git fetch;git status" C-m
 tmux send-keys -t oit:1 ".oit-modules; ls" C-m
 tmux send-keys -t oit:2.0 ".oit;cd docroot/themes;ls" C-m

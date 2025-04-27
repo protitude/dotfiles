@@ -141,6 +141,51 @@ function blt() {
     return 1
   fi
 }
+
+function robo() {
+  if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/robo" ]; then
+    $PROJECT_ROOT/vendor/bin/robo "$@"
+
+  # Check for local robo.
+  elif [ -f "./vendor/bin/robo" ]; then
+    ./vendor/bin/robo "$@"
+
+  else
+    echo "You must run this command from within a Robo-generated project."
+    return 1
+  fi
+}
+
+function drush() {
+  if [ "`git rev-parse --show-cdup 2> /dev/null`" != "" ]; then
+    PROJECT_ROOT=$(git rev-parse --show-cdup)
+  else
+    PROJECT_ROOT="."
+  fi
+
+  if [ -f "$PROJECT_ROOT/vendor/bin/drush" ]; then
+    $PROJECT_ROOT/vendor/bin/drush "$@"
+
+  # Check for local drush.
+  elif [ -f "./vendor/bin/drush" ]; then
+    ./vendor/bin/drush "$@"
+
+  else
+    echo "You must run this command from within a project with drush."
+    return 1
+  fi
+}
+
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+  export TERM=xterm-256color
+fi
+
 function meeting() {
   open /Applications/zoom.us.app
   open /Applications/Camo\ Studio.app

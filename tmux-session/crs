@@ -1,0 +1,18 @@
+#!/bin/sh
+tmux new-session -d -s crs -n Apps
+tmux split-window -v
+tmux new-window -t crs:1 -n web-root
+tmux new-window -t crs:2 -n themes
+tmux split-window -v
+tmux resize-pane -D 10
+tmux new-window -t crs:3 -n notes
+
+tmux send-keys -t crs:0.0 "cd /Volumes/Users/Miles/Documents/p1_crssubmit/ISO.WorkflowManagement/ISO.WorkflowManagement.Web/Apps; ls" C-m
+tmux send-keys -t crs:0.1 "cd /Volumes/Users/Miles/Documents/p1_crssubmit/ISO.WorkflowManagement/ISO.WorkflowManagement.Web/Apps" C-m
+tmux send-keys -t crs:1 "cd /Volumes/Users/Miles/Documents/p1_crssubmit/ISO.WorkflowManagement/ISO.WorkflowManagement.Web; ls" C-m
+tmux send-keys -t crs:2.0 "cd /Volumes/Users/Miles/Documents/p1_crssubmit/ISO.WorkflowManagement/ISO.WorkflowManagement.Web/Apps/Bs5" C-m
+tmux send-keys -t crs:2.1 "cd /Volumes/Users/Miles/Documents/p1_crssubmit/ISO.WorkflowManagement/ISO.WorkflowManagement.Web/Apps/Bs5" C-m
+tmux send-keys -t crs:3 "vi" C-m
+
+tmux select-window -t crs:0
+tmux -2 attach-session -d
