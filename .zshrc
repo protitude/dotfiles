@@ -150,11 +150,15 @@ function robo() {
   fi
 
   if [ -f "$PROJECT_ROOT/vendor/bin/robo" ]; then
-    $PROJECT_ROOT/vendor/bin/robo "$@"
+    echo 'Suppressed error with "php -d error_reporting=0" to avoid warnings from older Robo versions.'
+    echo 'Remove after drush fixes this'
+    php -d error_reporting=0 $PROJECT_ROOT/vendor/bin/robo "$@" 2>&1 | cat
 
   # Check for local robo.
   elif [ -f "./vendor/bin/robo" ]; then
-    ./vendor/bin/robo "$@"
+    echo 'Suppressed error with "php -d error_reporting=0" to avoid warnings from older Robo versions.'
+    echo 'Remove after drush fixes this'
+    php -d error_reporting=0 ./vendor/bin/robo "$@" 2>&1 | cat
 
   else
     echo "You must run this command from within a Robo-generated project."
@@ -204,9 +208,17 @@ export NVM_DIR="$HOME/.nvm" PATH="/Users/$USER/Library/Python/3.9/bin:$PATH"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/opt/php@8.1/bin:$PATH"
 
-eval "$(gh copilot alias -- zsh)"
+# eval "$(gh copilot alias -- zsh)"
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/Users/france/.cache/lm-studio/bin"
 
 # Lando
 export PATH="/Users/france/.lando/bin${PATH+:$PATH}"; #landopath
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/france/.antigravity/antigravity/bin:$PATH"
+
+# Mount NFS share
+alias mount-nfs='sudo mount -t nfs -o resvport 10.1.0.170:/media/protitude/ox/macos-share /Volumes/macos-share'

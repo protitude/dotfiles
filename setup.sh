@@ -27,3 +27,7 @@ then
   ln -s /Volumes/Docs/rclone.conf ~/.config/rclone/rclone.conf
 fi
 
+if [ ! -L ~/Library/Application\ Support/com.mitchellh.ghostty/config ]
+then
+  ln -s $(pwd)"/ghostty.config" ~/Library/Application\ Support/com.mitchellh.ghostty/config
+fi

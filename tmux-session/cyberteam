@@ -6,7 +6,7 @@ tmux new-window -t cyberteam:2 -n themes
 tmux split-window -v -p 20
 tmux new-window -t cyberteam:3 -n todo
 
-tmux send-keys -t cyberteam:0.0 ".cyberteam;lando start;lando blt amp:uli" C-m
+tmux send-keys -t cyberteam:0.0 ".cyberteam;ddev start;robo uli" C-m
 tmux send-keys -t cyberteam:0.1 ".cyberteam;git fetch;git status" C-m
 tmux send-keys -t cyberteam:1 ".cyberteam;cd web/modules/custom" C-m
 tmux send-keys -t cyberteam:2.0 ".cyberteam;cd web/themes" C-m
