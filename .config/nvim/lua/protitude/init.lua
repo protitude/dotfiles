@@ -1,6 +1,5 @@
 require("protitude.set")
 require("protitude.remap")
-require("protitude.treesitter_context_patch") -- Add the treesitter context patch
 
 local augroup = vim.api.nvim_create_augroup
 local ProtitudeGroup = augroup('Protitude', {})
@@ -24,7 +23,7 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = ProtitudeGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })

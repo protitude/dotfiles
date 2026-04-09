@@ -24,6 +24,6 @@ ssh mainebackups "rm -rf $catzilla/*"
 #copy new takeouts
 mv $downloads/takeout-* $godzilla
 
-rsync -avz $godzilla/ protitude-cloak:$shaq
+rsync -avz $godzilla/ protitude-cloak:$shaq/
 
-rsync -avz $godzilla/ mainebackups:$catzilla
+rsync -avz $godzilla/ mainebackups:$catzilla/
